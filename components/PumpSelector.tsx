@@ -11,10 +11,7 @@ const pumps = [1, 2, 3, 4];
 export default function PumpSelector({ onSelect }: PumpSelectorProps) {
   return (
     <div className="w-full max-w-2xl mx-auto px-4 animate-fadeInUp">
-      <h2 className="text-2xl font-bold text-[#333333] text-center mb-8">
-        Seleziona la pompa
-      </h2>
-      <div className="grid grid-cols-2 max-[480px]:grid-cols-1 gap-6 justify-items-center">
+      <div className="grid grid-cols-2 gap-4 sm:gap-6 justify-items-center">
         {pumps.map((pumpId) => (
           <button
             key={pumpId}

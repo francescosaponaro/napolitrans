@@ -39,13 +39,17 @@ export default function NavBar() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 h-[60px] bg-[#D32F2F] shadow-md flex items-center justify-between px-4 sm:px-6">
         {/* Logo */}
-        <div className="flex items-center">
+        <button
+          onClick={() => window.location.reload()}
+          className="flex items-center focus:outline-none"
+          aria-label="Ricarica pagina"
+        >
           <img
             src="/logo.png"
             alt="NapoliTrans"
-            className="h-10 w-auto object-contain"
+            className="h-10 w-auto object-contain cursor-pointer"
           />
-        </div>
+        </button>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-6">
