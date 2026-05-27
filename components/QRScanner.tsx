@@ -96,10 +96,6 @@ export default function QRScanner({ onScan }: QRScannerProps) {
 
   return (
     <div className="w-full max-w-md mx-auto px-4 flex flex-col items-center animate-fadeInUp">
-      <h2 className="text-2xl font-bold text-[#333333] text-center mb-6">
-        Scansiona il QR del veicolo
-      </h2>
-
       {error && (
         <div className="mb-4 text-[#D32F2F] font-medium text-center bg-red-50 px-4 py-3 rounded-xl border border-red-200">
           {error}
