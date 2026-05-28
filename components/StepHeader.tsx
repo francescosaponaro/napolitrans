@@ -12,7 +12,6 @@ interface StepHeaderProps {
 
 export default function StepHeader({
   currentStep,
-  totalSteps = 4,
   title,
   onBack,
   showBack = true,
@@ -27,7 +26,7 @@ export default function StepHeader({
   return (
     <div className="w-full mb-6 animate-fadeInUp">
       {/* Top row: back arrow + title */}
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-3 mb-3">
         {showBack && (
           <button
             onClick={onBack}

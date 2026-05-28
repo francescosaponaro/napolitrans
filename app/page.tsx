@@ -72,9 +72,9 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-60px)] bg-[#f9f9f9] flex flex-col items-center justify-center px-4 py-6 sm:py-10">
+    <div className="min-h-[calc(100vh-60px)] bg-[#f9f9f9] flex flex-col px-4 py-6 sm:py-10">
       {step === "STEP_1_HOME" && (
-        <div key="STEP_1_HOME" className="flex flex-col items-center text-center animate-fadeInUp">
+        <div key="STEP_1_HOME" className="flex-1 flex flex-col items-center justify-center text-center animate-fadeInUp">
           <h1 className="text-3xl font-bold text-[#333333] mb-2">
             NapoliTrans
           </h1>
@@ -89,48 +89,58 @@ export default function Home() {
                        hover:bg-[#B71C1C] hover:scale-105 active:scale-95"
           >
             <Fuel className="w-6 h-6" />
-            AVVIA RIFORNIMENTO
+            forza napul
           </button>
         </div>
       )}
 
       {step === "STEP_2_SELECT_PUMP" && (
-        <div key="STEP_2_SELECT_PUMP" className="w-full max-w-2xl mx-auto animate-fadeInUp">
+        <>
           <StepHeader
             currentStep={2}
             title="Seleziona la pompa"
             onBack={goBackToHome}
           />
-          <PumpSelector onSelect={handlePumpSelect} />
-        </div>
+          <div className="flex-1 flex flex-col items-center justify-center animate-fadeInUp">
+            <PumpSelector onSelect={handlePumpSelect} />
+          </div>
+        </>
       )}
 
       {step === "STEP_3_SCAN_QR" && (
-        <div key="STEP_3_SCAN_QR" className="w-full max-w-2xl mx-auto animate-fadeInUp">
+        <>
           <StepHeader
             currentStep={3}
             title="Scansiona il QR"
             onBack={goBackToPump}
           />
-          <QRScanner onScan={handleQRScan} />
-        </div>
+          <div className="flex-1 flex flex-col items-center justify-center animate-fadeInUp">
+            <div className="w-full max-w-md mx-auto">
+              <QRScanner onScan={handleQRScan} />
+            </div>
+          </div>
+        </>
       )}
 
       {step === "STEP_4_IN_PROGRESS" && selectedPump !== null && scannedQR !== null && sessionStart !== null && (
-        <div key="STEP_4_IN_PROGRESS" className="w-full max-w-2xl mx-auto animate-fadeInUp">
+        <>
           <StepHeader
             currentStep={4}
             title="Rifornimento in corso"
             onBack={goBackToPump}
             showBack={false}
           />
-          <RefuellingInProgress
-            pumpId={selectedPump}
-            qrValue={scannedQR}
-            startTime={sessionStart}
-            onEnd={handleEndRefuelling}
-          />
-        </div>
+          <div className="flex-1 flex flex-col items-center justify-center animate-fadeInUp">
+            <div className="w-full max-w-lg mx-auto">
+              <RefuellingInProgress
+                pumpId={selectedPump}
+                qrValue={scannedQR}
+                startTime={sessionStart}
+                onEnd={handleEndRefuelling}
+              />
+            </div>
+          </div>
+        </>
       )}
     </div>
   );
