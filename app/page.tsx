@@ -3,7 +3,7 @@
 import { useState, useCallback } from "react";
 import { Fuel } from "lucide-react";
 import PumpSelector from "@/components/PumpSelector";
-import QRScanner from "@/components/QRScanner";
+import HardwareScanInput from "@/components/HardwareScanInput";
 import RefuellingInProgress from "@/components/RefuellingInProgress";
 import StepHeader from "@/components/StepHeader";
 import { addSession } from "@/lib/storage";
@@ -111,12 +111,12 @@ export default function Home() {
         <>
           <StepHeader
             currentStep={3}
-            title="Scansiona il QR"
+            title="Scansiona il QR del veicolo"
             onBack={goBackToPump}
           />
           <div className="flex-1 flex flex-col items-center justify-center animate-fadeInUp">
             <div className="w-full max-w-md mx-auto">
-              <QRScanner onScan={handleQRScan} />
+              <HardwareScanInput onScan={handleQRScan} />
             </div>
           </div>
         </>

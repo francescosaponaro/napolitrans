@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NapoliTrans — Gestione rifornimento
 
-## Getting Started
+App Next.js per la gestione del rifornimento carburante. Lo step di scansione veicolo è pensato per **palmari Datalogic** (scanner hardware in modalità keyboard wedge), non per la fotocamera del browser.
 
-First, run the development server:
+## Avvio locale
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Apri [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scanner palmare Datalogic
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Pagina di test (`/scan-test`)
 
-## Learn More
+1. Sul palmare connesso in WiFi, apri **Test scanner** nel menu (o `/scan-test`).
+2. Metti il focus nel campo di cattura (automatico).
+3. Scansiona uno dei QR mostrati a schermo (payload noto, es. `NAPOLITRANS-TEST-ABC123`).
+4. Controlla il pannello **Ultima scansione** (e la console DevTools se disponibile):
+   - `parsedValue` — testo utile dopo normalizzazione
+   - `charCodes` — rivela CR (13), LF (10), Tab (9) o altri suffissi nascosti
+   - `lastKey` — di solito `Enter` a fine wedge
 
-To learn more about Next.js, take a look at the following resources:
+### 2. Configurazione sul device
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Su Datalogic (Scan2Deploy / impostazioni scanner):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Profilo **QR Code**
+- Modalità **Keyboard wedge**
+- Suffisso di fine scansione: in genere **CR/LF** (Invio)
 
-## Deploy on Vercel
+### 3. Suffisso custom in deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Se il palmare aggiunge una stringa fissa in coda (non solo Invio), imposta in `.env`:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```env
+NEXT_PUBLIC_SCAN_SUFFIX=|tua-stringa|
+```
+
+### 4. Flusso produzione
+
+Dopo la selezione pompa, lo step **Scansiona il QR del veicolo**:
+
+- **Palmare (default):** wedge + Invio → autocomplete → passo successivo automatico. Menu veicoli e lista suggerimenti opzionali.
+- **Telefono:** icona smartphone in alto a destra → fotocamera con loader → stessa logica autocomplete → passo successivo automatico.
+
+## Script
+
+| Comando        | Descrizione        |
+|----------------|--------------------|
+| `npm run dev`  | Server sviluppo    |
+| `npm run build`| Build produzione   |
+| `npm run start`| Server produzione  |
+| `npm run lint` | ESLint             |

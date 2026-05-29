@@ -59,6 +59,9 @@ export default function NavBar() {
           <Link href="/history" className={linkClasses("/history")}>
             Storico
           </Link>
+          {/* <Link href="/scan-test" className={linkClasses("/scan-test")}>
+            Test scanner
+          </Link> */}
         </div>
 
         {/* Mobile hamburger */}
@@ -120,6 +123,9 @@ export default function NavBar() {
             <Link href="/history" className={mobileLinkClasses("/history")} onClick={() => setIsOpen(false)}>
               Storico
             </Link>
+            {/* <Link href="/scan-test" className={mobileLinkClasses("/scan-test")} onClick={() => setIsOpen(false)}>
+              Test scanner
+            </Link> */}
           </nav>
 
           {/* Decorative bottom element */}
