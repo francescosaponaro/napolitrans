@@ -89,7 +89,7 @@ export default function Home() {
                        hover:bg-[#B71C1C] hover:scale-105 active:scale-95"
           >
             <Fuel className="w-6 h-6" />
-            FORZA LAZIOOOOOO0000000000000000000
+            FORZA ARSENAL
           </button>
         </div>
       )}
