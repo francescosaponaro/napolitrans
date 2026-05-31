@@ -98,7 +98,11 @@ export default function Home() {
                        hover:bg-[#B71C1C] hover:scale-105 active:scale-95"
           >
             <Fuel className="w-6 h-6" />
+<<<<<<< HEAD
             AVVIA RIFORNIMENTO
+=======
+            FORZA PARMA
+>>>>>>> 4c92f5eebe5b6e609cadd825abecd832b2e27467
           </button>
         </div>
       )}
