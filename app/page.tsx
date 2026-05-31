@@ -85,10 +85,10 @@ export default function Home() {
           className="flex-1 flex flex-col items-center justify-center text-center animate-fadeInUp"
         >
           <h1 className="text-3xl font-bold text-[#333333] mb-2">
-            NapoliTrans
+            Legacy application title
           </h1>
           <p className="text-base text-[#333333] mb-10 opacity-80">
-            Gestione rifornimento carburante
+            Legacy application subtitle or description.
           </p>
 
           <button
@@ -97,8 +97,7 @@ export default function Home() {
                        transition-all duration-200
                        hover:bg-[#B71C1C] hover:scale-105 active:scale-95"
           >
-            <Fuel className="w-6 h-6" />
-            AVVIA RIFORNIMENTO
+            Click to action
           </button>
         </div>
       )}

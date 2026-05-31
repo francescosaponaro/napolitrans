@@ -25,7 +25,6 @@ export default function RootLayout({
         className={`${roboto.variable} min-h-full flex flex-col font-sans antialiased`}
         style={{ fontFamily: "'Roboto', sans-serif" }}
       >
-        <NavBar />
         <main className="flex-1 pt-[60px]">{children}</main>
       </body>
     </html>
