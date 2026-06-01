@@ -3,7 +3,7 @@
 @theme inline {
   --color-primary: #D32F2F;
   --color-primary-dark: #B71C1C;
-  --color-bg: #f9f9f9;
+  --color-bg: #008000;
   --color-text-dark: #333333;
   --color-text-light: #f4f4f4;
   --color-text-muted: #666666;
@@ -16,7 +16,7 @@
 :root {
   --color-primary: #D32F2F;
   --color-primary-dark: #B71C1C;
-  --color-bg: #f9f9f9;
+  --color-bg: #008000;
   --color-text-dark: #333333;
   --color-text-light: #f4f4f4;
 }

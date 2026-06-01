@@ -78,14 +78,14 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-60px)] bg-[#f9f9f9] flex flex-col px-4 py-6 sm:py-10">
+    <div className="min-h-[calc(100vh-60px)] bg-[#008000] flex flex-col px-4 py-6 sm:py-10">
       {step === "STEP_1_HOME" && (
         <div
           key="STEP_1_HOME"
           className="flex-1 flex flex-col items-center justify-center text-center animate-fadeInUp"
         >
           <h1 className="text-3xl font-bold text-[#333333] mb-2">
-            Legacy application title
+            vibecoding test
           </h1>
           <p className="text-base text-[#333333] mb-10 opacity-80">
             Legacy application subtitle or description.
@@ -93,9 +93,9 @@ export default function Home() {
 
           <button
             onClick={handleStartRefuelling}
-            className="flex items-center gap-3 px-12 py-5 bg-[#D32F2F] text-[#f4f4f4] font-bold text-lg rounded-2xl shadow-lg
+            className="flex items-center gap-3 px-12 py-5 bg-blue-600 text-[#f4f4f4] font-bold text-lg rounded-2xl shadow-lg
                        transition-all duration-200
-                       hover:bg-[#B71C1C] hover:scale-105 active:scale-95"
+                       hover:bg-blue-700 hover:scale-105 active:scale-95"
           >
             Click to action
           </button>
