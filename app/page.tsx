@@ -5,6 +5,7 @@ import {
   TrendingUp,
   ArrowUpRight,
   ArrowDownRight,
+  Plus,
 } from "lucide-react";
 import DataTable from "@/components/DataTable";
 
@@ -78,6 +79,25 @@ export default function DashboardPage() {
             </div>
           );
         })}
+      </div>
+
+      {/* Quick Actions */}
+      <div className="bg-white rounded-xl border border-[#e2e8f0] shadow-sm p-5 mb-8">
+        <h2 className="text-sm font-semibold text-[#0f172a] mb-4 uppercase tracking-wide">Quick Actions</h2>
+        <div className="flex flex-wrap gap-3">
+          <button className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#0f172a] text-sm font-medium transition-colors">
+            <Plus size={16} />
+            New Order
+          </button>
+          <button className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#0f172a] text-sm font-medium transition-colors">
+            <Plus size={16} />
+            New Customer
+          </button>
+          <button className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#f1f5f9] hover:bg-[#e2e8f0] text-[#0f172a] text-sm font-medium transition-colors">
+            <Plus size={16} />
+            New Product
+          </button>
+        </div>
       </div>
 
       {/* Table section */}

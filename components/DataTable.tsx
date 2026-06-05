@@ -22,7 +22,7 @@ const orders: Order[] = [
   { id: "#ORD-7520", customer: "Emily Davis", email: "emily@example.com", product: "iPad Air", amount: 799.00, status: "Pending", date: "2024-05-27" },
   { id: "#ORD-7519", customer: "Robert Wilson", email: "robert@example.com", product: "Apple Watch Ultra", amount: 799.00, status: "Completed", date: "2024-05-26" },
   { id: "#ORD-7518", customer: "Lisa Anderson", email: "lisa@example.com", product: "Magic Keyboard", amount: 299.00, status: "Cancelled", date: "2024-05-26" },
-  { id: "#ORD-7517", customer: "David Martinez", email: "david@example.com", product: "Studio Display", amount: 1599.00, status: "Processing", date: "2024-05-25" },
+  { id: "#ORD-7517", customer: "David Martinez", email: "david@example.com", product: "Studio Display", amount: 1599.00, status: "Completed", date: "2024-05-25" },
   { id: "#ORD-7516", customer: "Jennifer Taylor", email: "jen@example.com", product: "Mac Studio", amount: 1999.00, status: "Completed", date: "2024-05-25" },
   { id: "#ORD-7515", customer: "James Thomas", email: "james@example.com", product: "HomePod Mini", amount: 99.00, status: "Pending", date: "2024-05-24" },
   { id: "#ORD-7514", customer: "Amanda White", email: "amanda@example.com", product: "AirTag 4-Pack", amount: 99.00, status: "Completed", date: "2024-05-24" },
