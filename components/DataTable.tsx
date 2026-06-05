@@ -17,7 +17,7 @@ interface Order {
 
 const orders: Order[] = [
   { id: "#ORD-7523", customer: "John Smith", email: "john@example.com", product: "MacBook Pro 16\"", amount: 2499.00, status: "Completed", date: "2024-05-28" },
-  { id: "#ORD-7522", customer: "Sarah Johnson", email: "sarah@example.com", product: "iPhone 15 Pro", amount: 1199.00, status: "Processing", date: "2024-05-28" },
+  { id: "#ORD-7522", customer: "Sarah Johnson", email: "sarah@example.com", product: "iPhone 15 Pro", amount: 1199.00, status: "Completed", date: "2024-05-28" },
   { id: "#ORD-7521", customer: "Michael Brown", email: "michael@example.com", product: "AirPods Pro 2", amount: 249.00, status: "Completed", date: "2024-05-27" },
   { id: "#ORD-7520", customer: "Emily Davis", email: "emily@example.com", product: "iPad Air", amount: 799.00, status: "Pending", date: "2024-05-27" },
   { id: "#ORD-7519", customer: "Robert Wilson", email: "robert@example.com", product: "Apple Watch Ultra", amount: 799.00, status: "Completed", date: "2024-05-26" },
