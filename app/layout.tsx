@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import NavBar from "@/components/NavBar";
+import Sidebar from "@/components/Sidebar";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -10,8 +10,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "NapoliTrans - Gestione Rifornimento",
-  description: "Piattaforma di gestione rifornimento carburante NapoliTrans",
+  title: "Dashboard - Sample App",
+  description: "A sample dashboard application built with Next.js",
 };
 
 export default function RootLayout({
@@ -20,12 +20,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="it" className="h-full">
+    <html lang="en" className="h-full">
       <body
-        className={`${roboto.variable} min-h-full flex flex-col font-sans antialiased`}
+        className={`${roboto.variable} h-full font-sans antialiased`}
         style={{ fontFamily: "'Roboto', sans-serif" }}
       >
-        <main className="flex-1 pt-[60px]">{children}</main>
+        <div className="flex h-full">
+          <Sidebar />
+          <main className="flex-1 overflow-y-auto bg-[#f8fafc]">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

@@ -1,77 +1,54 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: #D32F2F;
-  --color-primary-dark: #B71C1C;
-  --color-bg: #008000;
-  --color-text-dark: #333333;
-  --color-text-light: #f4f4f4;
-  --color-text-muted: #666666;
-  --color-border: #e0e0e0;
-  --color-row-alt: #fafafa;
-  --color-row-hover: #fff5f5;
+  --color-sidebar-bg: #0f172a;
+  --color-sidebar-text: #94a3b8;
+  --color-sidebar-active: #e2e8f0;
+  --color-sidebar-hover: #1e293b;
+  --color-content-bg: #f8fafc;
+  --color-card-bg: #ffffff;
+  --color-border: #e2e8f0;
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
   --font-sans: 'Roboto', sans-serif;
 }
 
 :root {
-  --color-primary: #D32F2F;
-  --color-primary-dark: #B71C1C;
-  --color-bg: #008000;
-  --color-text-dark: #333333;
-  --color-text-light: #f4f4f4;
+  --color-sidebar-bg: #0f172a;
+  --color-sidebar-text: #94a3b8;
+  --color-sidebar-active: #e2e8f0;
+  --color-sidebar-hover: #1e293b;
+  --color-content-bg: #f8fafc;
+  --color-card-bg: #ffffff;
+  --color-border: #e2e8f0;
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text-dark);
+  background-color: var(--color-content-bg);
+  color: #1e293b;
   font-family: 'Roboto', sans-serif;
 }
 
-/* Pulsing border for QR scanner viewfinder */
-@keyframes pulse-border {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.4); }
-  50%       { box-shadow: 0 0 0 8px rgba(211, 47, 47, 0); }
-}
-
-/* Fuel icon pulse for in-progress screen */
-@keyframes fuelPulse {
-  0%, 100% { transform: scale(1);   filter: drop-shadow(0 0 4px rgba(211,47,47,0.3)); }
-  50%       { transform: scale(1.1); filter: drop-shadow(0 0 12px rgba(211,47,47,0.7)); }
-}
-
-/* Fade-in for step transitions */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fadeInUp {
-  animation: fadeInUp 0.3s ease-out;
-}
-
-.animate-pulse-border {
-  animation: pulse-border 1.5s infinite;
-}
-
-.animate-fuel-pulse {
-  animation: fuelPulse 1.2s ease-in-out infinite;
-}
-
-/* Custom scrollbar for history table */
-.overflow-x-auto::-webkit-scrollbar {
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
   height: 8px;
 }
 
-.overflow-x-auto::-webkit-scrollbar-track {
-  background: #f1f1f1;
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
   border-radius: 4px;
 }
 
-.overflow-x-auto::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 4px;
-}
-
-.overflow-x-auto::-webkit-scrollbar-thumb:hover {
-  background: #aaa;
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }

@@ -1,158 +1,95 @@
-"use client";
+import {
+  DollarSign,
+  Users,
+  ShoppingCart,
+  TrendingUp,
+  ArrowUpRight,
+  ArrowDownRight,
+} from "lucide-react";
+import DataTable from "@/components/DataTable";
 
-import { useState, useCallback } from "react";
-import { Fuel } from "lucide-react";
-import PumpSelector from "@/components/PumpSelector";
-import HardwareScanInput from "@/components/HardwareScanInput";
-import RefuellingInProgress from "@/components/RefuellingInProgress";
-import StepHeader from "@/components/StepHeader";
-import { addSession } from "@/lib/storage";
+const stats = [
+  {
+    title: "Total Revenue",
+    value: "$45,231.89",
+    change: "+20.1%",
+    trend: "up",
+    icon: DollarSign,
+  },
+  {
+    title: "Active Users",
+    value: "2,345",
+    change: "+15.2%",
+    trend: "up",
+    icon: Users,
+  },
+  {
+    title: "Total Orders",
+    value: "12,234",
+    change: "-3.5%",
+    trend: "down",
+    icon: ShoppingCart,
+  },
+  {
+    title: "Growth Rate",
+    value: "8.4%",
+    change: "+1.2%",
+    trend: "up",
+    icon: TrendingUp,
+  },
+];
 
-type Step =
-  | "STEP_1_HOME"
-  | "STEP_2_SELECT_PUMP"
-  | "STEP_3_SCAN_QR"
-  | "STEP_4_IN_PROGRESS";
-
-export default function Home() {
-  const [step, setStep] = useState<Step>("STEP_1_HOME");
-  const [selectedPump, setSelectedPump] = useState<number | null>(null);
-  const [scannedQR, setScannedQR] = useState<string | null>(null);
-  const [sessionStart, setSessionStart] = useState<string | null>(null);
-
-  const handleStartRefuelling = () => {
-    setStep("STEP_2_SELECT_PUMP");
-  };
-
-  const handlePumpSelect = useCallback((pumpId: number) => {
-    setSelectedPump(pumpId);
-    setStep("STEP_3_SCAN_QR");
-  }, []);
-
-  const handleQRScan = useCallback((qrValue: string) => {
-    setScannedQR(qrValue);
-    const now = new Date().toISOString();
-    setSessionStart(now);
-    setStep("STEP_4_IN_PROGRESS");
-  }, []);
-
-  const handleEndRefuelling = useCallback(() => {
-    if (selectedPump === null || scannedQR === null || sessionStart === null) {
-      setStep("STEP_1_HOME");
-      setSelectedPump(null);
-      setScannedQR(null);
-      setSessionStart(null);
-      return;
-    }
-
-    const vehicleType: "MATRIX" | "TRAILER" = scannedQR
-      .toUpperCase()
-      .includes("MATRIX")
-      ? "MATRIX"
-      : "TRAILER";
-
-    const endTime = new Date().toISOString();
-
-    addSession({
-      pumpId: selectedPump,
-      qrIdentifier: scannedQR,
-      vehicleType,
-      startTime: sessionStart,
-      endTime,
-    });
-
-    setStep("STEP_1_HOME");
-    setSelectedPump(null);
-    setScannedQR(null);
-    setSessionStart(null);
-  }, [selectedPump, scannedQR, sessionStart]);
-
-  const goBackToHome = () => {
-    setStep("STEP_1_HOME");
-    setSelectedPump(null);
-  };
-
-  const goBackToPump = () => {
-    setStep("STEP_2_SELECT_PUMP");
-    setScannedQR(null);
-  };
-
+export default function DashboardPage() {
   return (
-    <div className="min-h-[calc(100vh-60px)] bg-[#008000] flex flex-col px-4 py-6 sm:py-10">
-      {step === "STEP_1_HOME" && (
-        <div
-          key="STEP_1_HOME"
-          className="flex-1 flex flex-col items-center justify-center text-center animate-fadeInUp"
-        >
-          <h1 className="text-3xl font-bold text-[#333333] mb-2">
-            vibecoding test
-          </h1>
-          <p className="text-base text-[#333333] mb-10 opacity-80">
-            Legacy application subtitle or description.
-          </p>
+    <div className="p-6 lg:p-8">
+      <div className="mb-8">
+        <h1 className="text-2xl font-bold text-[#0f172a]">Dashboard</h1>
+        <p className="text-[#64748b] mt-1">
+          Welcome back! Here&apos;s what&apos;s happening with your business.
+        </p>
+      </div>
 
-          <button
-            onClick={handleStartRefuelling}
-            className="flex items-center gap-3 px-12 py-5 bg-blue-600 text-[#f4f4f4] font-bold text-lg rounded-2xl shadow-lg
-                       transition-all duration-200
-                       hover:bg-blue-700 hover:scale-105 active:scale-95"
-          >
-            Click to action
-          </button>
-        </div>
-      )}
-
-      {step === "STEP_2_SELECT_PUMP" && (
-        <>
-          <StepHeader
-            currentStep={2}
-            title="Seleziona la pompa"
-            onBack={goBackToHome}
-          />
-          <div className="flex-1 flex flex-col items-center justify-center animate-fadeInUp">
-            <PumpSelector onSelect={handlePumpSelect} />
-          </div>
-        </>
-      )}
-
-      {step === "STEP_3_SCAN_QR" && (
-        <>
-          <StepHeader
-            currentStep={3}
-            title="Scansiona il QR del veicolo"
-            onBack={goBackToPump}
-          />
-          <div className="flex-1 flex flex-col items-center justify-center animate-fadeInUp">
-            <div className="w-full max-w-md mx-auto">
-              <HardwareScanInput onScan={handleQRScan} />
-            </div>
-          </div>
-        </>
-      )}
-
-      {step === "STEP_4_IN_PROGRESS" &&
-        selectedPump !== null &&
-        scannedQR !== null &&
-        sessionStart !== null && (
-          <>
-            <StepHeader
-              currentStep={4}
-              title="Rifornimento in corso"
-              onBack={goBackToPump}
-              showBack={false}
-            />
-            <div className="flex-1 flex flex-col items-center justify-center animate-fadeInUp">
-              <div className="w-full max-w-lg mx-auto">
-                <RefuellingInProgress
-                  pumpId={selectedPump}
-                  qrValue={scannedQR}
-                  startTime={sessionStart}
-                  onEnd={handleEndRefuelling}
-                />
+      {/* Stats cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        {stats.map((stat) => {
+          const Icon = stat.icon;
+          const TrendIcon = stat.trend === "up" ? ArrowUpRight : ArrowDownRight;
+          const trendColor =
+            stat.trend === "up" ? "text-emerald-600" : "text-red-500";
+          return (
+            <div
+              key={stat.title}
+              className="bg-white rounded-xl border border-[#e2e8f0] p-5 shadow-sm"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-sm text-[#64748b]">{stat.title}</span>
+                <div className="w-9 h-9 rounded-lg bg-[#f1f5f9] flex items-center justify-center">
+                  <Icon size={18} className="text-[#475569]" />
+                </div>
+              </div>
+              <div className="text-2xl font-bold text-[#0f172a]">
+                {stat.value}
+              </div>
+              <div className={`flex items-center gap-1 mt-1 text-sm font-medium ${trendColor}`}>
+                <TrendIcon size={14} />
+                <span>{stat.change}</span>
+                <span className="text-[#94a3b8] font-normal ml-1">vs last month</span>
               </div>
             </div>
-          </>
-        )}
+          );
+        })}
+      </div>
+
+      {/* Table section */}
+      <div className="bg-white rounded-xl border border-[#e2e8f0] shadow-sm">
+        <div className="px-6 py-5 border-b border-[#e2e8f0]">
+          <h2 className="text-lg font-semibold text-[#0f172a]">Recent Orders</h2>
+          <p className="text-sm text-[#64748b] mt-0.5">
+            You have 24 orders this month
+          </p>
+        </div>
+        <DataTable />
+      </div>
     </div>
   );
 }
